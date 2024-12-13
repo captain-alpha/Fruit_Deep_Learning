@@ -1,0 +1,293 @@
+Deep Learning Proje Aşamaları
+
+============================================================================================================================================
+Description:
+Bu projenin amacı, meyve ve sebze sınıflarını içeren Fruits-360 veri setini [1] kullanarak meyve ve sebzeleri sınıflandırmaktır. Proje, geleneksel makine öğrenimi ve derin öğrenmeyi birleştiren birden fazla aşamadan oluşuyor
+============================================================================================================================================
+
+============================================================================================================================================
+1- Veri kümesinin boyutluluğunu azaltmak ve meyveleri etkili bir şekilde temsil etmek için [2]'de açıklandığı gibi Temel Bileşen Analizi'ni (PCA) kullanın.
+============================================================================================================================================
+
+
+============================================================================================================================================
+2- Daha sonra sınıflandırma için en az dört geleneksel makine öğrenme algoritması uygulayın (Random Forest gibi en az bir topluluk öğrenme yöntemi ve XGBoost ve LightGBM gibi en az iki güçlendirme algoritması) [2].
+============================================================================================================================================
+
+Ensemble Learning Methods (algorithms) (Topluluk Öğrenme Yöntemleri (algoritmaları))
+1. Bagging
+2. Boosting
+3. Random forest
+
+Classification algorithms:
+1. Logistic Regression Classification Algorithm in Machine Learning
+2. Decision Tree
+3. Random Forest
+4. Support Vector Machine (SVM)
+5. Naive Bayes
+6. K-Nearest Neighbors (KNN)
+
+
+============================================================================================================================================
+3- Daha sonra test doğruluğunu en üst düzeye çıkarmak için uygun sayıda katman ve nörona sahip bir Yapay Sinir Ağı (YSA) geliştirin [3]. 
+============================================================================================================================================
+
+============================================================================================================================================
+4- YSA'ya benzer şekilde, özel bir Evrişimli Sinir Ağı (CNN) mimarisi oluşturun [4]. Aşırı uyumun önlenmesi gibi kurs sırasında açıklanan tüm yaklaşımları göz önünde bulundurun
+============================================================================================================================================
+
+============================================================================================================================================
+5- Detaylı bir rapor hazırlayın. Uygulanan tüm çözümler için her sınıfın kesinlik, geri çağırma ve F1 sonuçlarını gösteren bir tablo çizin. Karışıklık matrisini, eğitim/doğrulama kaybını ve eğitim/doğrulama doğruluk değerlerini temsil edin. Doğrulama ve test sonuçlarını [5]'teki gibi yorumlayarak gösterin.
+============================================================================================================================================
+
+
+Veriyi yüksek performanslı olarak genelleyebilen bir model oluşturmak için kullanılan modeller:
+Decision tree (Karar ağacı)
+Support vector machines (Destek vektör makineleri)
+Linear Regression ()
+ANN (Yapay Sinir Ağı)
+
+
+
+1:
+Bu pdf'de istenen projeyi açıklayarak hangi adımları yapmam gerektiğini anlatır mısın
+
+2:
+Sana soracağım sorularla adım adım projeyi ilerletmek istiyorum. Hazirsan hazirim diyebilirsin
+
+3:
+Bu projenin amacı, meyve ve sebze sınıflarını içeren Fruits-360 veri setini kullanarak meyve ve sebzeleri sınıflandırmaktır. Proje, geleneksel makine öğrenimi ve derin öğrenmeyi birleştiren birden fazla aşamadan oluşuyor.
+
+Oncelikle Proje dosya icerigi su sekilde:
+|_Datasets
+  |_fruits-360_dataset_100x100
+      |_fruits-360
+        |_Test
+          |_Apple 6
+          |_Apple Braeburn 1
+          |_Apple Crimson Snow 1
+          |_...
+        |_Training
+          |_Apple 6
+          |_Apple Braeburn 1
+          |_Apple Crimson Snow 1
+          |_...
+        |_LICENCE
+        |_Readme.md
+  |_fruits-360_dataset_original-size
+    |_fruits-360-original-size
+      |_Meta
+        |_apple_6
+          |_info.txt
+        |_apple_braeburn_1
+          |_info.txt
+        |_...
+      |_Papers
+        |_readme.txt
+      |_Test
+        |_apple_6
+        |_apple_braeburn_1
+        |_apple_crimson_snow_1
+        |_...
+      |_Training
+        |_apple_6
+        |_apple_braeburn_1
+        |_apple_crimson_snow_1
+        |_...
+      |_Validation
+        |_apple_6
+        |_apple_braeburn_1
+        |_apple_crimson_snow_1
+        |_...
+      |_readme.md
+
+|_DeepLearning.ipynb
+
+
+Bu dosya yapisini anladiysan onaylar misin
+
+4:
+import numpy as np 
+import cv2
+import glob
+import os
+import matplotlib.pyplot as plt
+import string
+from mlxtend.plotting import plot_decision_regions
+from mpl_toolkits.mplot3d import Axes3D
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier 
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.utils.multiclass import unique_labels
+from sklearn import metrics
+from sklearn.svm import SVC
+
+print(os.listdir("../input"))
+dim = 100
+
+Bu proje icin kulanacagimiz yukaridaki kutuphane kodlarini yorum satiri ekleyerek aciklar misin
+
+5:
+print(os.listdir("../input"))
+yukaridaki satiri benim dosya dizime gore nasil yazmam gerekiyor
+
+6::::::::::::::::::::::::::::::
+print(os.listdir("Datasets"))
+dim = 100
+
+kodu bu sekilde duzenledim
+
+
+7::::::::::::::::::::::::::::::
+import cv2  # Görüntü işleme işlemleri için OpenCV kütüphanesi.
+from mlxtend.plotting import plot_decision_regions  # Karar sınırlarını görselleştirmek için kullanılır.
+
+yukaridaki iki satir calistirildiginda
+No module named 'cv2'
+No module named 'mlxtend'
+hatalarini veriyor. bu sorunu nasil cozebilirim
+
+8::::::::::::::::::::::::::::::
+Hatalari cozdum. Simdi görselleri yükleme islemini nasil yapabilirim
+
+9::::::::::::::::::::::::::::::
+senin kodlarin ile yukaridaki kodlarin arasinda bir fark var mi
+
+10::::::::::::::::::::::::::::::
+Su an senin kodlarin uzerinden devam edelim. Gerekirse duzenlememiz gereken yerleri degistiririz. Simdi verileri PCA veya modellerle işleme koyabiliriz. 
+
+
+, ön işleme veya görselleştirme işlemlerine geçebiliriz. Hazır olduğunuzda devam edelim!
+
+
+::: 
+Gorseller basariyla yuklendi. Diger asamaya gecmeden once bir sorum olacak.
+
+print(f"Eğitim Görselleri: {train_images.shape}, Etiketler: {train_labels.shape}")
+print(f"Test Görselleri: {test_images.shape}, Etiketler: {test_labels.shape}")
+
+Yukaridaki satirlarda kullanilan shape degeri nedir
+
+
+==============================================================================================================================================================================================================================================================================================
+							DEEP LEARNING KODLAMA
+						      (Jupyter Notebook && Python)
+==============================================================================================================================================================================================================================================================================================
+
+## Jupyter Notebook'da hata verdigi icin bazi gereksinimler
+pip install opencv-python # OpenCV kutuphanesinin calismasi icin
+
+----------------------------------------------------------------------------------------------------------------
+
+pip install mlxtend # mlxtend kutuphanesinin calismasi icin
+
+----------------------------------------------------------------------------------------------------------------
+
+## Gerekli Kutuphaneler eklenir
+import numpy as np # Sayısal işlemler ve matris manipülasyonu için kullanılır.
+import matplotlib.pyplot as plt # Visualization için kullanılan kütüphane
+from sklearn.decomposition import PCA # # Principal Component Analysis (PCA) uygulamak için.
+from sklearn.preprocessing import StandardScaler # Verileri ölçeklendirmek (normalize etmek) için kullanılır.
+from sklearn.neighbors import KNeighborsClassifier # K-Nearest Neighbors (KNN) algoritmasını uygulamak için.
+from sklearn.tree import DecisionTreeClassifier # Karar ağacı algoritmasını uygulamak için.
+from sklearn.model_selection import train_test_split, cross_val_score # Veri setini eğitim/test olarak ayırmak ve çapraz doğrulama yapmak için.
+from sklearn.svm import SVC # Destek Vektör Makineleri (Support Vector Classifier) algoritmasını uygulamak için.
+
+import cv2  # Görüntü işleme işlemleri için OpenCV kütüphanesi.
+import glob  # Belirli bir desene uyan dosya isimlerini almak için kullanılır.
+import os  # Dosya ve dizin işlemleri için gerekli.
+import string  # String işlemleri için standart kütüphane.
+from mlxtend.plotting import plot_decision_regions  # Karar sınırlarını görselleştirmek için kullanılır.
+from mpl_toolkits.mplot3d import Axes3D  # 3D grafik çizimleri için kullanılır.
+from sklearn.utils.multiclass import unique_labels  # Sınıf etiketlerini almak için kullanılır.
+from sklearn import metrics  # Model değerlendirme metrikleri (accuracy, precision, recall, vs.) için.
+
+----------------------------------------------------------------------------------------------------------------
+
+# Verisetindeki gorsellerin yuklenmesi
+def load_images(fruits, folder_path, data_type, dim, print_n=False):
+    """
+    Belirli meyve sınıflarını yükler.
+    
+    Args:
+        fruits (list): Yüklenmesi gereken meyve sınıflarının isimleri.
+        folder_path (str): Eğitim veya test verilerinin ana klasör yolu.
+        data_type (str): "Training" veya "Test" klasörünü seçmek için.
+        dim (int): Görsellerin yeniden boyutlandırılacağı hedef boyut (dim x dim).
+        print_n (bool): Yüklenen her sınıfın görsel sayısını yazdırmak için.
+        
+    Returns:
+        images (numpy array): Yüklenen görseller.
+        labels (numpy array): Görsellerin sınıf etiketleri (sayısal format).
+    """
+    images = []
+    labels = []
+    path = os.path.join(folder_path, data_type)  # Ana yolun altındaki "Training" veya "Test" klasörünü seç
+    
+    # Seçili meyve sınıflarını tara
+    for i, fruit in enumerate(fruits):
+        fruit_path = os.path.join(path, fruit)  # Her sınıf için alt klasör yolu
+        j = 0  # Bu sınıf için yüklenen görsel sayısını takip etmek için
+
+        # Bu meyveye ait tüm görselleri tara
+        for image_path in glob.glob(os.path.join(fruit_path, "*.jpg")):
+            # Görseli yükle
+            image = cv2.imread(image_path, cv2.IMREAD_COLOR)
+            if image is not None:
+                # Görselleri yeniden boyutlandır
+                image = cv2.resize(image, (dim, dim))
+                # Görsel ve etiket listelerine ekle
+                images.append(image)
+                labels.append(i)  # Etiket olarak sayısal sınıf numarası ekle
+                j += 1
+
+        # Her sınıf için yüklenen görsel sayısını yazdır (isteğe bağlı)
+        if print_n:
+            print(f"{data_type.upper()} klasöründe {fruit.upper()} için {j} görsel yüklendi.")
+
+    # Listeleri numpy array formatına çevir
+    images = np.array(images)
+    labels = np.array(labels)
+    return images, labels
+
+def get_all_fruits(folder_path):
+    """
+    Eğitim klasöründen tüm meyve sınıflarını otomatik olarak bulur.
+    
+    Args:
+        folder_path (str): Eğitim verilerinin ana klasör yolu.
+        
+    Returns:
+        fruits (list): Tüm meyve sınıflarının isimlerini içeren liste.
+    """
+    fruits = []
+    training_path = os.path.join(folder_path, "Training")
+    for fruit_folder in os.listdir(training_path):
+        if os.path.isdir(os.path.join(training_path, fruit_folder)):
+            fruits.append(fruit_folder)
+    return fruits
+
+----------------------------------------------------------------------------------------------------------------
+
+# Ana yol ve görsellerin hedef boyutu
+dataset_path = "Datasets/fruits-360_dataset_100x100/fruits-360"
+dim = 100
+
+# Tüm sınıfları otomatik olarak alın
+all_fruits = get_all_fruits(dataset_path)
+
+----------------------------------------------------------------------------------------------------------------
+
+train_images, train_labels = load_images(all_fruits, dataset_path, "Training", dim, print_n=True)
+test_images, test_labels = load_images(all_fruits, dataset_path, "Test", dim, print_n=True)
+
+----------------------------------------------------------------------------------------------------------------
+
+# Yükleme sonucunu kontrol et
+print(f"Eğitim Görselleri: {train_images.shape}, Etiketler: {train_labels.shape}")
+print(f"Test Görselleri: {test_images.shape}, Etiketler: {test_labels.shape}")
+
+----------------------------------------------------------------------------------------------------------------
+

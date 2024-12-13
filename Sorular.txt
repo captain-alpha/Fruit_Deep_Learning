@@ -1,0 +1,5 @@
+1- [2]'deki PCA örneğinde olduğu gibi bizimde iki fruit seçip (binary classicifation) mi PCA uygulamamız lazım yoksa bütün fruit'leri kapsayan bir PCA mı uygulamamız lazım?
+
+2- [3]'deki ANN örneğinde olduğu gibi bizimde 4 fruit seçip ANN uygulamamız lazım yoksa bütün fruit'leri kapsayan bir ANN mi uygulamamız lazım?
+
+3- [4]'deki CNN örneğinde olduğu gibi bizimde 9 fruit seçip CNN uygulamamız lazım yoksa bütün fruit'leri kapsayan bir CNN mi uygulamamız lazım?
