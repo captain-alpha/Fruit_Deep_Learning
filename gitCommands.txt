@@ -1,3 +1,21 @@
-C:\Users\abdul\JUPYTER_NOTEBOOK_PROJECTS\GITHUB\Fruit_Deep_Learning>git add *
-C:\Users\abdul\JUPYTER_NOTEBOOK_PROJECTS\GITHUB\Fruit_Deep_Learning>git commit -m "Commit Description"
-C:\Users\abdul\JUPYTER_NOTEBOOK_PROJECTS\GITHUB\Fruit_Deep_Learning>git push -u origin main
+path: C:\Users\abdul\JUPYTER_NOTEBOOK_PROJECTS\GITHUB\Fruit_Deep_Learning
+
+Degisiklikleri Commit etmek icin:
+>git add *
+>git commit -m "Commit Description"
+>git push -u origin main
+
+create a new repository on the command line:
+echo "# git-komutlarini-gormek-icin" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/captain-alpha/Fruit_Deep_Learning.git
+git push -u origin main
+
+
+push an existing repository from the command line:
+git remote add origin https://github.com/captain-alpha/Fruit_Deep_Learning.git
+git branch -M main
+git push -u origin main
