@@ -5,6 +5,13 @@ Degisiklikleri Commit etmek icin:
 >git commit -m "Commit Description"
 >git push -u origin main
 
+Yeni bir branch oluşturmak için:
+>git branch branch_name
+>git status  // bulunulan branch yazdirir
+>git branch  // hangi branch'lerin oldugunu gosterir
+>git switch branch_name  // branch degistirme komutu
+
+
 create a new repository on the command line:
 echo "# git-komutlarini-gormek-icin" >> README.md
 git init
