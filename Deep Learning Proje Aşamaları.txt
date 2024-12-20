@@ -19,6 +19,12 @@ Ensemble Learning Methods (algorithms) (Topluluk Öğrenme Yöntemleri (algoritm
 2. Boosting
 3. Random forest
 
+Boosting Algorithms (Guclendirme Algoritmalari):
+1. XGBoost
+2. LightGBM 
+3. GBM
+4. CatBoost
+
 Classification algorithms:
 1. Logistic Regression Classification Algorithm in Machine Learning
 2. Decision Tree
